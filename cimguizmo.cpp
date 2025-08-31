@@ -83,6 +83,18 @@ CIMGUI_API void ImGuizmo_AllowAxisFlip(bool value)
 {
     return ImGuizmo::AllowAxisFlip(value);
 }
+CIMGUI_API Style* Style_Style(void)
+{
+    return IM_NEW(Style)();
+}
+CIMGUI_API void Style_destroy(Style* self)
+{
+    IM_DELETE(self);
+}
+CIMGUI_API Style* ImGuizmo_GetStyle()
+{
+    return &ImGuizmo::GetStyle();
+}
 
 
 

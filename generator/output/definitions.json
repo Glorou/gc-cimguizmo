@@ -162,6 +162,24 @@
       "stname": ""
     }
   ],
+  "ImGuizmo_GetStyle": [
+    {
+      "args": "()",
+      "argsT": [],
+      "argsoriginal": "()",
+      "call_args": "()",
+      "cimguiname": "ImGuizmo_GetStyle",
+      "defaults": {},
+      "funcname": "GetStyle",
+      "location": "ImGuizmo:263",
+      "namespace": "ImGuizmo",
+      "ov_cimguiname": "ImGuizmo_GetStyle",
+      "ret": "Style*",
+      "retref": "&",
+      "signature": "()",
+      "stname": ""
+    }
+  ],
   "ImGuizmo_IsOver": [
     {
       "args": "()",
@@ -543,6 +561,41 @@
       "ret": "void",
       "signature": "(float*,const float*,OPERATION,MODE,float*,float,ImVec2,ImVec2,ImU32)",
       "stname": ""
+    }
+  ],
+  "Style_Style": [
+    {
+      "args": "()",
+      "argsT": [],
+      "argsoriginal": "()",
+      "call_args": "()",
+      "cimguiname": "Style_Style",
+      "constructor": true,
+      "defaults": {},
+      "funcname": "Style",
+      "location": "ImGuizmo:249",
+      "ov_cimguiname": "Style_Style",
+      "signature": "()",
+      "stname": "Style"
+    }
+  ],
+  "Style_destroy": [
+    {
+      "args": "(Style* self)",
+      "argsT": [
+        {
+          "name": "self",
+          "type": "Style*"
+        }
+      ],
+      "call_args": "(self)",
+      "cimguiname": "Style_destroy",
+      "defaults": {},
+      "destructor": true,
+      "ov_cimguiname": "Style_destroy",
+      "ret": "void",
+      "signature": "(Style*)",
+      "stname": "Style"
     }
   ]
 }

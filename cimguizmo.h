@@ -32,10 +32,43 @@ typedef enum {
       LOCAL,
       WORLD
    }MODE;
+typedef enum {
+      DIRECTION_X,
+      DIRECTION_Y,
+      DIRECTION_Z,
+      PLANE_X,
+      PLANE_Y,
+      PLANE_Z,
+      SELECTION,
+      INACTIVE,
+      TRANSLATION_LINE,
+      SCALE_LINE,
+      ROTATION_USING_BORDER,
+      ROTATION_USING_FILL,
+      HATCHED_AXIS_LINES,
+      TEXT,
+      TEXT_SHADOW,
+      COUNT
+   }COLOR;
+typedef struct Style Style;
+struct Style
+{
+      float TranslationLineThickness;
+      float TranslationLineArrowSize;
+      float RotationLineThickness;
+      float RotationOuterLineThickness;
+      float ScaleLineThickness;
+      float ScaleLineCircleSize;
+      float HatchedAxisLineThickness;
+      float CenterCircleSize;
+      ImVec4 Colors[COUNT];
+};
 #else
 #endif // CIMGUI_DEFINE_ENUMS_AND_STRUCTS
 
 #ifndef CIMGUI_DEFINE_ENUMS_AND_STRUCTS
+typedef ImGuizmo::Style Style;
+typedef ImGuizmo::COLOR COLOR;
 typedef ImGuizmo::MODE MODE;
 typedef ImGuizmo::OPERATION OPERATION;
 #endif //CIMGUI_DEFINE_ENUMS_AND_STRUCTS
@@ -58,6 +91,9 @@ CIMGUI_API void ImGuizmo_SetID(int id);
 CIMGUI_API bool ImGuizmo_IsOver_OPERATION(OPERATION op);
 CIMGUI_API void ImGuizmo_SetGizmoSizeClipSpace(float value);
 CIMGUI_API void ImGuizmo_AllowAxisFlip(bool value);
+CIMGUI_API Style* Style_Style(void);
+CIMGUI_API void Style_destroy(Style* self);
+CIMGUI_API Style* ImGuizmo_GetStyle(void);
 
 
 

@@ -51,4 +51,37 @@ namespace ImGuizmo
              bool IsOver(OPERATION op);
              void SetGizmoSizeClipSpace(float value);
              void AllowAxisFlip(bool value);
+   enum COLOR
+   {
+      DIRECTION_X,
+      DIRECTION_Y,
+      DIRECTION_Z,
+      PLANE_X,
+      PLANE_Y,
+      PLANE_Z,
+      SELECTION,
+      INACTIVE,
+      TRANSLATION_LINE,
+      SCALE_LINE,
+      ROTATION_USING_BORDER,
+      ROTATION_USING_FILL,
+      HATCHED_AXIS_LINES,
+      TEXT,
+      TEXT_SHADOW,
+      COUNT
+   };
+   struct Style
+   {
+                Style();
+      float TranslationLineThickness;
+      float TranslationLineArrowSize;
+      float RotationLineThickness;
+      float RotationOuterLineThickness;
+      float ScaleLineThickness;
+      float ScaleLineCircleSize;
+      float HatchedAxisLineThickness;
+      float CenterCircleSize;
+      ImVec4 Colors[COLOR::COUNT];
+   };
+             Style& GetStyle();
 }
