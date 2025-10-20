@@ -108,12 +108,137 @@
         "name": "UNIVERSAL",
         "value": "TRANSLATE | ROTATE | SCALEU"
       }
+    ],
+    "SEQUENCER_OPTIONS": [
+      {
+        "calc_value": 0,
+        "name": "SEQUENCER_EDIT_NONE",
+        "value": "0"
+      },
+      {
+        "calc_value": 2,
+        "name": "SEQUENCER_EDIT_STARTEND",
+        "value": "1 << 1"
+      },
+      {
+        "calc_value": 8,
+        "name": "SEQUENCER_CHANGE_FRAME",
+        "value": "1 << 3"
+      },
+      {
+        "calc_value": 16,
+        "name": "SEQUENCER_ADD",
+        "value": "1 << 4"
+      },
+      {
+        "calc_value": 32,
+        "name": "SEQUENCER_DEL",
+        "value": "1 << 5"
+      },
+      {
+        "calc_value": 64,
+        "name": "SEQUENCER_COPYPASTE",
+        "value": "1 << 6"
+      },
+      {
+        "calc_value": 10,
+        "name": "SEQUENCER_EDIT_ALL",
+        "value": "SEQUENCER_EDIT_STARTEND | SEQUENCER_CHANGE_FRAME"
+      }
     ]
   },
   "enumtypes": [],
   "locations": {
     "MODE": "ImGuizmo:199",
-    "OPERATION": "ImGuizmo:170"
+    "OPERATION": "ImGuizmo:170",
+    "SEQUENCER_OPTIONS": "ImSequencer:33",
+    "SequenceInterface": "ImSequencer:44",
+    "SequenceInterfaceVTable": "ImSequencer:75"
   },
-  "structs": []
+  "structs": {
+    "SequenceInterface": [
+      {
+        "name": "focused",
+        "type": "bool"
+      },
+      {
+        "name": "GetFrameMin()const",
+        "type": "virtual int"
+      },
+      {
+        "name": "GetFrameMax()const",
+        "type": "virtual int"
+      },
+      {
+        "name": "GetItemCount()const",
+        "type": "virtual int"
+      },
+      {
+        "name": "index",
+        "type": "virtual void Get(int"
+      },
+      {
+        "name": "~SequenceInterface()",
+        "type": "virtual"
+      }
+    ],
+    "SequenceInterfaceVTable": [
+      {
+        "name": "GetItemTypeCount",
+        "type": "int(*)(void* userdata)"
+      },
+      {
+        "name": "GetItemTypeName",
+        "type": "const char*(*)(int typeIndex,void* userdata)"
+      },
+      {
+        "name": "GetItemLabel",
+        "type": "const char*(*)(int index,void* userdata)"
+      },
+      {
+        "name": "GetCollapseFmt",
+        "type": "const char*(*)(void* userdata)"
+      },
+      {
+        "name": "Get",
+        "type": "void(*)(int index,int** start,int** end,int* type,unsigned int* color,void* userdata)"
+      },
+      {
+        "name": "Add",
+        "type": "void(*)(int type,void* userdata)"
+      },
+      {
+        "name": "Del",
+        "type": "void(*)(int index,void* userdata)"
+      },
+      {
+        "name": "Duplicate",
+        "type": "void(*)(int index,void* userdata)"
+      },
+      {
+        "name": "Copy",
+        "type": "void(*)(void* userdata)"
+      },
+      {
+        "name": "Paste",
+        "type": "void(*)(void* userdata)"
+      },
+      {
+        "name": "DoubleClick",
+        "type": "void(*)(int index,void* userdata)"
+      },
+      {
+        "name": "CustomDraw",
+        "type": "void(*)(int index,ImDrawList* draw_list,const ImRect* rc,const ImRect* legendRect,const ImRect* clippingRect,const ImRect* legendClippingRect,void* userdata)"
+      },
+      {
+        "name": "CustomDrawCompact",
+        "type": "void(*)(int index,ImDrawList* draw_list,const ImRect* rc,const ImRect* clippingRect,void* userdata)"
+      },
+      {
+        "name": "userdata",
+        "type": "void*"
+      }
+    ]
+  }
 }

@@ -1,1 +1,6 @@
-[]
+{
+  "ImDrawList": "struct ImDrawList",
+  "ImRect": "struct ImRect",
+  "SequenceInterface": "struct SequenceInterface",
+  "SequenceInterfaceVTable": "struct SequenceInterfaceVTable"
+}

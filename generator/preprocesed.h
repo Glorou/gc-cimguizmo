@@ -52,3 +52,68 @@ namespace ImGuizmo
              void SetGizmoSizeClipSpace(float value);
              void AllowAxisFlip(bool value);
 }
+struct ImDrawList;
+struct ImRect;
+namespace ImSequencer
+{
+   enum SEQUENCER_OPTIONS
+   {
+      SEQUENCER_EDIT_NONE = 0,
+      SEQUENCER_EDIT_STARTEND = 1 << 1,
+      SEQUENCER_CHANGE_FRAME = 1 << 3,
+      SEQUENCER_ADD = 1 << 4,
+      SEQUENCER_DEL = 1 << 5,
+      SEQUENCER_COPYPASTE = 1 << 6,
+      SEQUENCER_EDIT_ALL = SEQUENCER_EDIT_STARTEND | SEQUENCER_CHANGE_FRAME
+   };
+   struct SequenceInterface
+   {
+      bool focused = false;
+      virtual int GetFrameMin() const = 0;
+      virtual int GetFrameMax() const = 0;
+      virtual int GetItemCount() const = 0;
+      virtual void BeginEdit(int ) {}
+      virtual void EndEdit() {}
+      virtual int GetItemTypeCount() const { return 0; }
+      virtual const char* GetItemTypeName(int ) const { return ""; }
+      virtual const char* GetItemLabel(int ) const { return ""; }
+      virtual const char* GetCollapseFmt() const { return "%d Frames / %d entries"; }
+      virtual void Get(int index, int** start, int** end, int* type, unsigned int* color) = 0;
+      virtual void Add(int ) {}
+      virtual void Del(int ) {}
+      virtual void Duplicate(int ) {}
+      virtual void Copy() {}
+      virtual void Paste() {}
+      virtual size_t GetCustomHeight(int ) { return 0; }
+      virtual void DoubleClick(int ) {}
+      virtual void CustomDraw(int , ImDrawList* , const ImRect& , const ImRect& , const ImRect& , const ImRect& ) {}
+      virtual void CustomDrawCompact(int , ImDrawList* , const ImRect& , const ImRect& ) {}
+       virtual ~SequenceInterface() = default;
+   };
+   struct SequenceInterfaceVTable
+   {
+      int(*GetFrameMin) (void* userdata);
+      int(*GetFrameMax) (void* userdata);
+      int(*GetItemCount) (void* userdata);
+      void(*BeginEdit) (int index, void* userdata);
+      void(*EndEdit) (void* userdata);
+      int(*GetItemTypeCount)(void* userdata);
+      const char* (*GetItemTypeName)(int typeIndex, void* userdata);
+      const char* (*GetItemLabel)(int index, void* userdata);
+      const char* (*GetCollapseFmt)(void* userdata);
+      void (*Get)(int index, int** start, int** end, int* type, unsigned int* color, void* userdata);
+      void (*Add)(int type, void* userdata);
+      void (*Del)(int index, void* userdata);
+      void (*Duplicate)(int index, void* userdata);
+      void (*Copy)(void* userdata);
+      void (*Paste)(void* userdata);
+      size_t (*GetCustomHeight)(int index, void* userdata);
+      void (*DoubleClick)(int index, void* userdata);
+      void (*CustomDraw)(int index, ImDrawList* draw_list, const ImRect* rc, const ImRect* legendRect, const ImRect* clippingRect, const ImRect* legendClippingRect, void* userdata);
+      void (*CustomDrawCompact)(int index, ImDrawList* draw_list, const ImRect* rc, const ImRect* clippingRect, void* userdata);
+      void* userdata;
+   };
+   SequenceInterface* CreateSequencerInterface(const SequenceInterfaceVTable& table);
+   void DestroySequenceInterface(SequenceInterface* ptr);
+   bool Sequencer(SequenceInterface* sequence, int* currentFrame, bool* expanded, int* selectedEntry, int* firstFrame, int sequenceOptions);
+}

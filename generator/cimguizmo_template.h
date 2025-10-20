@@ -10,7 +10,6 @@
 
 #include "auto_funcs.h"
 
-
 #endif //CIMGUIZMO_INCLUDED
 
 

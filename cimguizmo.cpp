@@ -3,6 +3,7 @@
 #include "imgui.h"
 #include "imgui_internal.h"
 #include "./ImGuizmo/ImGuizmo.h"
+#include "./ImGuizmo/ImSequencer.h"
 #include "cimguizmo.h"
 
 
@@ -82,6 +83,78 @@ CIMGUI_API void ImGuizmo_SetGizmoSizeClipSpace(float value)
 CIMGUI_API void ImGuizmo_AllowAxisFlip(bool value)
 {
     return ImGuizmo::AllowAxisFlip(value);
+}
+CIMGUI_API void SequenceInterface_BeginEdit(SequenceInterface* self,int noname1)
+{
+    return self->BeginEdit(noname1);
+}
+CIMGUI_API void SequenceInterface_EndEdit(SequenceInterface* self)
+{
+    return self->EndEdit();
+}
+CIMGUI_API int SequenceInterface_GetItemTypeCount(SequenceInterface* self)
+{
+    return self->GetItemTypeCount();
+}
+CIMGUI_API const char* SequenceInterface_GetItemTypeName(SequenceInterface* self,int noname1)
+{
+    return self->GetItemTypeName(noname1);
+}
+CIMGUI_API const char* SequenceInterface_GetItemLabel(SequenceInterface* self,int noname1)
+{
+    return self->GetItemLabel(noname1);
+}
+CIMGUI_API const char* SequenceInterface_GetCollapseFmt(SequenceInterface* self)
+{
+    return self->GetCollapseFmt();
+}
+CIMGUI_API void SequenceInterface_Add(SequenceInterface* self,int noname1)
+{
+    return self->Add(noname1);
+}
+CIMGUI_API void SequenceInterface_Del(SequenceInterface* self,int noname1)
+{
+    return self->Del(noname1);
+}
+CIMGUI_API void SequenceInterface_Duplicate(SequenceInterface* self,int noname1)
+{
+    return self->Duplicate(noname1);
+}
+CIMGUI_API void SequenceInterface_Copy(SequenceInterface* self)
+{
+    return self->Copy();
+}
+CIMGUI_API void SequenceInterface_Paste(SequenceInterface* self)
+{
+    return self->Paste();
+}
+CIMGUI_API size_t SequenceInterface_GetCustomHeight(SequenceInterface* self,int noname1)
+{
+    return self->GetCustomHeight(noname1);
+}
+CIMGUI_API void SequenceInterface_DoubleClick(SequenceInterface* self,int noname1)
+{
+    return self->DoubleClick(noname1);
+}
+CIMGUI_API void SequenceInterface_CustomDraw(SequenceInterface* self,int noname1,ImDrawList* noname2,const ImRect noname3,const ImRect noname4,const ImRect noname5,const ImRect noname6)
+{
+    return self->CustomDraw(noname1,noname2,noname3,noname4,noname5,noname6);
+}
+CIMGUI_API void SequenceInterface_CustomDrawCompact(SequenceInterface* self,int noname1,ImDrawList* noname2,const ImRect noname3,const ImRect noname4)
+{
+    return self->CustomDrawCompact(noname1,noname2,noname3,noname4);
+}
+CIMGUI_API SequenceInterface* ImSequencer_CreateSequencerInterface(const SequenceInterfaceVTable table)
+{
+    return ImSequencer::CreateSequencerInterface(table);
+}
+CIMGUI_API void ImSequencer_DestroySequenceInterface(SequenceInterface* ptr)
+{
+    return ImSequencer::DestroySequenceInterface(ptr);
+}
+CIMGUI_API bool ImSequencer_Sequencer(SequenceInterface* sequence,int* currentFrame,bool* expanded,int* selectedEntry,int* firstFrame,int sequenceOptions)
+{
+    return ImSequencer::Sequencer(sequence,currentFrame,expanded,selectedEntry,firstFrame,sequenceOptions);
 }
 
 

@@ -7,6 +7,8 @@
 
 #ifdef CIMGUI_DEFINE_ENUMS_AND_STRUCTS
 
+typedef struct ImDrawList ImDrawList;
+typedef struct ImRect ImRect;
 typedef enum {
       TRANSLATE_X = (1u << 0),
       TRANSLATE_Y = (1u << 1),
@@ -32,12 +34,54 @@ typedef enum {
       LOCAL,
       WORLD
    }MODE;
+struct ImDrawList;
+struct ImRect;
+typedef enum {
+      SEQUENCER_EDIT_NONE = 0,
+      SEQUENCER_EDIT_STARTEND = 1 << 1,
+      SEQUENCER_CHANGE_FRAME = 1 << 3,
+      SEQUENCER_ADD = 1 << 4,
+      SEQUENCER_DEL = 1 << 5,
+      SEQUENCER_COPYPASTE = 1 << 6,
+      SEQUENCER_EDIT_ALL = SEQUENCER_EDIT_STARTEND | SEQUENCER_CHANGE_FRAME
+   }SEQUENCER_OPTIONS;
+typedef struct SequenceInterface SequenceInterface;
+struct SequenceInterface
+{
+      bool focused;
+      virtual int GetFrameMin() const;
+      virtual int GetFrameMax() const;
+      virtual int GetItemCount() const;
+      virtual void Get(int index, int** start, int** end, int* type, unsigned int* color);
+       virtual ~SequenceInterface();
+};
+typedef struct SequenceInterfaceVTable SequenceInterfaceVTable;
+struct SequenceInterfaceVTable
+{
+      int(*GetItemTypeCount)(void* userdata);
+      const char* (*GetItemTypeName)(int typeIndex, void* userdata);
+      const char* (*GetItemLabel)(int index, void* userdata);
+      const char* (*GetCollapseFmt)(void* userdata);
+      void (*Get)(int index, int** start, int** end, int* type, unsigned int* color, void* userdata);
+      void (*Add)(int type, void* userdata);
+      void (*Del)(int index, void* userdata);
+      void (*Duplicate)(int index, void* userdata);
+      void (*Copy)(void* userdata);
+      void (*Paste)(void* userdata);
+      void (*DoubleClick)(int index, void* userdata);
+      void (*CustomDraw)(int index, ImDrawList* draw_list, const ImRect* rc, const ImRect* legendRect, const ImRect* clippingRect, const ImRect* legendClippingRect, void* userdata);
+      void (*CustomDrawCompact)(int index, ImDrawList* draw_list, const ImRect* rc, const ImRect* clippingRect, void* userdata);
+      void* userdata;
+};
 #else
 #endif // CIMGUI_DEFINE_ENUMS_AND_STRUCTS
 
 #ifndef CIMGUI_DEFINE_ENUMS_AND_STRUCTS
+typedef ImSequencer::SequenceInterface SequenceInterface;
+typedef ImSequencer::SequenceInterfaceVTable SequenceInterfaceVTable;
 typedef ImGuizmo::MODE MODE;
 typedef ImGuizmo::OPERATION OPERATION;
+typedef ImSequencer::SEQUENCER_OPTIONS SEQUENCER_OPTIONS;
 #endif //CIMGUI_DEFINE_ENUMS_AND_STRUCTS
 CIMGUI_API void ImGuizmo_SetDrawlist(ImDrawList* drawlist);
 CIMGUI_API void ImGuizmo_BeginFrame(void);
@@ -58,7 +102,24 @@ CIMGUI_API void ImGuizmo_SetID(int id);
 CIMGUI_API bool ImGuizmo_IsOver_OPERATION(OPERATION op);
 CIMGUI_API void ImGuizmo_SetGizmoSizeClipSpace(float value);
 CIMGUI_API void ImGuizmo_AllowAxisFlip(bool value);
-
+CIMGUI_API void SequenceInterface_BeginEdit(SequenceInterface* self,int noname1);
+CIMGUI_API void SequenceInterface_EndEdit(SequenceInterface* self);
+CIMGUI_API int SequenceInterface_GetItemTypeCount(SequenceInterface* self);
+CIMGUI_API const char* SequenceInterface_GetItemTypeName(SequenceInterface* self,int noname1);
+CIMGUI_API const char* SequenceInterface_GetItemLabel(SequenceInterface* self,int noname1);
+CIMGUI_API const char* SequenceInterface_GetCollapseFmt(SequenceInterface* self);
+CIMGUI_API void SequenceInterface_Add(SequenceInterface* self,int noname1);
+CIMGUI_API void SequenceInterface_Del(SequenceInterface* self,int noname1);
+CIMGUI_API void SequenceInterface_Duplicate(SequenceInterface* self,int noname1);
+CIMGUI_API void SequenceInterface_Copy(SequenceInterface* self);
+CIMGUI_API void SequenceInterface_Paste(SequenceInterface* self);
+CIMGUI_API size_t SequenceInterface_GetCustomHeight(SequenceInterface* self,int noname1);
+CIMGUI_API void SequenceInterface_DoubleClick(SequenceInterface* self,int noname1);
+CIMGUI_API void SequenceInterface_CustomDraw(SequenceInterface* self,int noname1,ImDrawList* noname2,const ImRect noname3,const ImRect noname4,const ImRect noname5,const ImRect noname6);
+CIMGUI_API void SequenceInterface_CustomDrawCompact(SequenceInterface* self,int noname1,ImDrawList* noname2,const ImRect noname3,const ImRect noname4);
+CIMGUI_API SequenceInterface* ImSequencer_CreateSequencerInterface(const SequenceInterfaceVTable table);
+CIMGUI_API void ImSequencer_DestroySequenceInterface(SequenceInterface* ptr);
+CIMGUI_API bool ImSequencer_Sequencer(SequenceInterface* sequence,int* currentFrame,bool* expanded,int* selectedEntry,int* firstFrame,int sequenceOptions);
 
 
 #endif //CIMGUIZMO_INCLUDED

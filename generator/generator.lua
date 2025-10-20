@@ -80,6 +80,7 @@ local serializeTableF = cpp2ffi.serializeTableF
 local func_header_generate = cpp2ffi.func_header_generate
 local func_implementation = cpp2ffi.func_implementation
 
+local table_do_sorted = cpp2ffi.table_do_sorted
 
 --generate cimgui.cpp cimgui.h 
 local function cimgui_generation(parser,name)
@@ -129,6 +130,7 @@ local function parseImGuiHeader(header,names)
 	local parser = cpp2ffi.Parser()
 	parser.getCname = function(stname,funcname,namespace)
 		--local pre = (stname == "") and "ImPlot_" or stname.."_"
+		if namespace then namespace = namespace:gsub("::","_") end
 		local pre = (stname == "") and (namespace and (namespace=="ImGui" and "ig" or namespace.."_") or "ig") or stname.."_"
 		return pre..funcname
 	end
@@ -146,8 +148,15 @@ end
 --generation
 print("------------------generation with "..COMPILER.."------------------------")
 local modulename = "cimguizmo"
-local parser1 = parseImGuiHeader([[../ImGuizmo/ImGuizmo.h]],{[[ImGuizmo]]})
+local headerst = [[#include "../ImGuizmo/ImGuizmo.h"
+]]
+headerst = headerst .. [[#include "../ImGuizmo/ImSequencer.h"
+]]
+save_data("headers.h",headerst)
+local parser1 = parseImGuiHeader([[headers.h]],{[[ImGuizmo]],[[ImSequencer]]})
 parser1:do_parse()
+os.remove("headers.h")
+
 
 save_data("./output/overloads.txt",parser1.overloadstxt)
 cimgui_generation(parser1,modulename)

@@ -544,5 +544,478 @@
       "signature": "(float*,const float*,OPERATION,MODE,float*,float,ImVec2,ImVec2,ImU32)",
       "stname": ""
     }
+  ],
+  "ImSequencer_CreateSequencerInterface": [
+    {
+      "args": "(const SequenceInterfaceVTable table)",
+      "argsT": [
+        {
+          "name": "table",
+          "type": "const SequenceInterfaceVTable"
+        }
+      ],
+      "argsoriginal": "(const SequenceInterfaceVTable& table)",
+      "call_args": "(table)",
+      "cimguiname": "ImSequencer_CreateSequencerInterface",
+      "defaults": {},
+      "funcname": "CreateSequencerInterface",
+      "location": "ImSequencer:103",
+      "namespace": "ImSequencer",
+      "ov_cimguiname": "ImSequencer_CreateSequencerInterface",
+      "ret": "SequenceInterface*",
+      "signature": "(const SequenceInterfaceVTable)",
+      "stname": ""
+    }
+  ],
+  "ImSequencer_DestroySequenceInterface": [
+    {
+      "args": "(SequenceInterface* ptr)",
+      "argsT": [
+        {
+          "name": "ptr",
+          "type": "SequenceInterface*"
+        }
+      ],
+      "argsoriginal": "(SequenceInterface* ptr)",
+      "call_args": "(ptr)",
+      "cimguiname": "ImSequencer_DestroySequenceInterface",
+      "defaults": {},
+      "funcname": "DestroySequenceInterface",
+      "location": "ImSequencer:104",
+      "namespace": "ImSequencer",
+      "ov_cimguiname": "ImSequencer_DestroySequenceInterface",
+      "ret": "void",
+      "signature": "(SequenceInterface*)",
+      "stname": ""
+    }
+  ],
+  "ImSequencer_Sequencer": [
+    {
+      "args": "(SequenceInterface* sequence,int* currentFrame,bool* expanded,int* selectedEntry,int* firstFrame,int sequenceOptions)",
+      "argsT": [
+        {
+          "name": "sequence",
+          "type": "SequenceInterface*"
+        },
+        {
+          "name": "currentFrame",
+          "type": "int*"
+        },
+        {
+          "name": "expanded",
+          "type": "bool*"
+        },
+        {
+          "name": "selectedEntry",
+          "type": "int*"
+        },
+        {
+          "name": "firstFrame",
+          "type": "int*"
+        },
+        {
+          "name": "sequenceOptions",
+          "type": "int"
+        }
+      ],
+      "argsoriginal": "(SequenceInterface* sequence,int* currentFrame,bool* expanded,int* selectedEntry,int* firstFrame,int sequenceOptions)",
+      "call_args": "(sequence,currentFrame,expanded,selectedEntry,firstFrame,sequenceOptions)",
+      "cimguiname": "ImSequencer_Sequencer",
+      "defaults": {},
+      "funcname": "Sequencer",
+      "location": "ImSequencer:106",
+      "namespace": "ImSequencer",
+      "ov_cimguiname": "ImSequencer_Sequencer",
+      "ret": "bool",
+      "signature": "(SequenceInterface*,int*,bool*,int*,int*,int)",
+      "stname": ""
+    }
+  ],
+  "SequenceInterface_Add": [
+    {
+      "args": "(SequenceInterface* self,int noname1)",
+      "argsT": [
+        {
+          "name": "self",
+          "type": "SequenceInterface*"
+        },
+        {
+          "name": "noname1",
+          "type": "int"
+        }
+      ],
+      "argsoriginal": "(int)",
+      "call_args": "(noname1)",
+      "cimguiname": "SequenceInterface_Add",
+      "defaults": {},
+      "funcname": "Add",
+      "location": "ImSequencer:59",
+      "ov_cimguiname": "SequenceInterface_Add",
+      "ret": "virtual void",
+      "signature": "(int)",
+      "stname": "SequenceInterface"
+    }
+  ],
+  "SequenceInterface_BeginEdit": [
+    {
+      "args": "(SequenceInterface* self,int noname1)",
+      "argsT": [
+        {
+          "name": "self",
+          "type": "SequenceInterface*"
+        },
+        {
+          "name": "noname1",
+          "type": "int"
+        }
+      ],
+      "argsoriginal": "(int)",
+      "call_args": "(noname1)",
+      "cimguiname": "SequenceInterface_BeginEdit",
+      "defaults": {},
+      "funcname": "BeginEdit",
+      "location": "ImSequencer:51",
+      "ov_cimguiname": "SequenceInterface_BeginEdit",
+      "ret": "virtual void",
+      "signature": "(int)",
+      "stname": "SequenceInterface"
+    }
+  ],
+  "SequenceInterface_Copy": [
+    {
+      "args": "(SequenceInterface* self)",
+      "argsT": [
+        {
+          "name": "self",
+          "type": "SequenceInterface*"
+        }
+      ],
+      "argsoriginal": "()",
+      "call_args": "()",
+      "cimguiname": "SequenceInterface_Copy",
+      "defaults": {},
+      "funcname": "Copy",
+      "location": "ImSequencer:63",
+      "ov_cimguiname": "SequenceInterface_Copy",
+      "ret": "virtual void",
+      "signature": "()",
+      "stname": "SequenceInterface"
+    }
+  ],
+  "SequenceInterface_CustomDraw": [
+    {
+      "args": "(SequenceInterface* self,int noname1,ImDrawList* noname2,const ImRect noname3,const ImRect noname4,const ImRect noname5,const ImRect noname6)",
+      "argsT": [
+        {
+          "name": "self",
+          "type": "SequenceInterface*"
+        },
+        {
+          "name": "noname1",
+          "type": "int"
+        },
+        {
+          "name": "noname2",
+          "type": "ImDrawList*"
+        },
+        {
+          "name": "noname3",
+          "type": "const ImRect"
+        },
+        {
+          "name": "noname4",
+          "type": "const ImRect"
+        },
+        {
+          "name": "noname5",
+          "type": "const ImRect"
+        },
+        {
+          "name": "noname6",
+          "type": "const ImRect"
+        }
+      ],
+      "argsoriginal": "(int,ImDrawList*,const ImRect&,const ImRect&,const ImRect&,const ImRect&)",
+      "call_args": "(noname1,noname2,noname3,noname4,noname5,noname6)",
+      "cimguiname": "SequenceInterface_CustomDraw",
+      "defaults": {},
+      "funcname": "CustomDraw",
+      "location": "ImSequencer:68",
+      "ov_cimguiname": "SequenceInterface_CustomDraw",
+      "ret": "virtual void",
+      "signature": "(int,ImDrawList*,const ImRect,const ImRect,const ImRect,const ImRect)",
+      "stname": "SequenceInterface"
+    }
+  ],
+  "SequenceInterface_CustomDrawCompact": [
+    {
+      "args": "(SequenceInterface* self,int noname1,ImDrawList* noname2,const ImRect noname3,const ImRect noname4)",
+      "argsT": [
+        {
+          "name": "self",
+          "type": "SequenceInterface*"
+        },
+        {
+          "name": "noname1",
+          "type": "int"
+        },
+        {
+          "name": "noname2",
+          "type": "ImDrawList*"
+        },
+        {
+          "name": "noname3",
+          "type": "const ImRect"
+        },
+        {
+          "name": "noname4",
+          "type": "const ImRect"
+        }
+      ],
+      "argsoriginal": "(int,ImDrawList*,const ImRect&,const ImRect&)",
+      "call_args": "(noname1,noname2,noname3,noname4)",
+      "cimguiname": "SequenceInterface_CustomDrawCompact",
+      "defaults": {},
+      "funcname": "CustomDrawCompact",
+      "location": "ImSequencer:69",
+      "ov_cimguiname": "SequenceInterface_CustomDrawCompact",
+      "ret": "virtual void",
+      "signature": "(int,ImDrawList*,const ImRect,const ImRect)",
+      "stname": "SequenceInterface"
+    }
+  ],
+  "SequenceInterface_Del": [
+    {
+      "args": "(SequenceInterface* self,int noname1)",
+      "argsT": [
+        {
+          "name": "self",
+          "type": "SequenceInterface*"
+        },
+        {
+          "name": "noname1",
+          "type": "int"
+        }
+      ],
+      "argsoriginal": "(int)",
+      "call_args": "(noname1)",
+      "cimguiname": "SequenceInterface_Del",
+      "defaults": {},
+      "funcname": "Del",
+      "location": "ImSequencer:60",
+      "ov_cimguiname": "SequenceInterface_Del",
+      "ret": "virtual void",
+      "signature": "(int)",
+      "stname": "SequenceInterface"
+    }
+  ],
+  "SequenceInterface_DoubleClick": [
+    {
+      "args": "(SequenceInterface* self,int noname1)",
+      "argsT": [
+        {
+          "name": "self",
+          "type": "SequenceInterface*"
+        },
+        {
+          "name": "noname1",
+          "type": "int"
+        }
+      ],
+      "argsoriginal": "(int)",
+      "call_args": "(noname1)",
+      "cimguiname": "SequenceInterface_DoubleClick",
+      "defaults": {},
+      "funcname": "DoubleClick",
+      "location": "ImSequencer:67",
+      "ov_cimguiname": "SequenceInterface_DoubleClick",
+      "ret": "virtual void",
+      "signature": "(int)",
+      "stname": "SequenceInterface"
+    }
+  ],
+  "SequenceInterface_Duplicate": [
+    {
+      "args": "(SequenceInterface* self,int noname1)",
+      "argsT": [
+        {
+          "name": "self",
+          "type": "SequenceInterface*"
+        },
+        {
+          "name": "noname1",
+          "type": "int"
+        }
+      ],
+      "argsoriginal": "(int)",
+      "call_args": "(noname1)",
+      "cimguiname": "SequenceInterface_Duplicate",
+      "defaults": {},
+      "funcname": "Duplicate",
+      "location": "ImSequencer:61",
+      "ov_cimguiname": "SequenceInterface_Duplicate",
+      "ret": "virtual void",
+      "signature": "(int)",
+      "stname": "SequenceInterface"
+    }
+  ],
+  "SequenceInterface_EndEdit": [
+    {
+      "args": "(SequenceInterface* self)",
+      "argsT": [
+        {
+          "name": "self",
+          "type": "SequenceInterface*"
+        }
+      ],
+      "argsoriginal": "()",
+      "call_args": "()",
+      "cimguiname": "SequenceInterface_EndEdit",
+      "defaults": {},
+      "funcname": "EndEdit",
+      "location": "ImSequencer:52",
+      "ov_cimguiname": "SequenceInterface_EndEdit",
+      "ret": "virtual void",
+      "signature": "()",
+      "stname": "SequenceInterface"
+    }
+  ],
+  "SequenceInterface_GetCollapseFmt": [
+    {
+      "args": "(SequenceInterface* self)",
+      "argsT": [
+        {
+          "name": "self",
+          "type": "SequenceInterface*"
+        }
+      ],
+      "argsoriginal": "()",
+      "call_args": "()",
+      "cimguiname": "SequenceInterface_GetCollapseFmt",
+      "defaults": {},
+      "funcname": "GetCollapseFmt",
+      "location": "ImSequencer:56",
+      "ov_cimguiname": "SequenceInterface_GetCollapseFmt",
+      "ret": "virtual const char*",
+      "signature": "()const",
+      "stname": "SequenceInterface"
+    }
+  ],
+  "SequenceInterface_GetCustomHeight": [
+    {
+      "args": "(SequenceInterface* self,int noname1)",
+      "argsT": [
+        {
+          "name": "self",
+          "type": "SequenceInterface*"
+        },
+        {
+          "name": "noname1",
+          "type": "int"
+        }
+      ],
+      "argsoriginal": "(int)",
+      "call_args": "(noname1)",
+      "cimguiname": "SequenceInterface_GetCustomHeight",
+      "defaults": {},
+      "funcname": "GetCustomHeight",
+      "location": "ImSequencer:66",
+      "ov_cimguiname": "SequenceInterface_GetCustomHeight",
+      "ret": "virtual size_t",
+      "signature": "(int)",
+      "stname": "SequenceInterface"
+    }
+  ],
+  "SequenceInterface_GetItemLabel": [
+    {
+      "args": "(SequenceInterface* self,int noname1)",
+      "argsT": [
+        {
+          "name": "self",
+          "type": "SequenceInterface*"
+        },
+        {
+          "name": "noname1",
+          "type": "int"
+        }
+      ],
+      "argsoriginal": "(int)",
+      "call_args": "(noname1)",
+      "cimguiname": "SequenceInterface_GetItemLabel",
+      "defaults": {},
+      "funcname": "GetItemLabel",
+      "location": "ImSequencer:55",
+      "ov_cimguiname": "SequenceInterface_GetItemLabel",
+      "ret": "virtual const char*",
+      "signature": "(int)const",
+      "stname": "SequenceInterface"
+    }
+  ],
+  "SequenceInterface_GetItemTypeCount": [
+    {
+      "args": "(SequenceInterface* self)",
+      "argsT": [
+        {
+          "name": "self",
+          "type": "SequenceInterface*"
+        }
+      ],
+      "argsoriginal": "()",
+      "call_args": "()",
+      "cimguiname": "SequenceInterface_GetItemTypeCount",
+      "defaults": {},
+      "funcname": "GetItemTypeCount",
+      "location": "ImSequencer:53",
+      "ov_cimguiname": "SequenceInterface_GetItemTypeCount",
+      "ret": "virtual int",
+      "signature": "()const",
+      "stname": "SequenceInterface"
+    }
+  ],
+  "SequenceInterface_GetItemTypeName": [
+    {
+      "args": "(SequenceInterface* self,int noname1)",
+      "argsT": [
+        {
+          "name": "self",
+          "type": "SequenceInterface*"
+        },
+        {
+          "name": "noname1",
+          "type": "int"
+        }
+      ],
+      "argsoriginal": "(int)",
+      "call_args": "(noname1)",
+      "cimguiname": "SequenceInterface_GetItemTypeName",
+      "defaults": {},
+      "funcname": "GetItemTypeName",
+      "location": "ImSequencer:54",
+      "ov_cimguiname": "SequenceInterface_GetItemTypeName",
+      "ret": "virtual const char*",
+      "signature": "(int)const",
+      "stname": "SequenceInterface"
+    }
+  ],
+  "SequenceInterface_Paste": [
+    {
+      "args": "(SequenceInterface* self)",
+      "argsT": [
+        {
+          "name": "self",
+          "type": "SequenceInterface*"
+        }
+      ],
+      "argsoriginal": "()",
+      "call_args": "()",
+      "cimguiname": "SequenceInterface_Paste",
+      "defaults": {},
+      "funcname": "Paste",
+      "location": "ImSequencer:64",
+      "ov_cimguiname": "SequenceInterface_Paste",
+      "ret": "virtual void",
+      "signature": "()",
+      "stname": "SequenceInterface"
+    }
   ]
 }
